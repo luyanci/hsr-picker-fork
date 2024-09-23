@@ -60,7 +60,7 @@ jobs:
       - name: Package (${{ runner.os }})
         run: |
          cd electron-static
-         7z a -tzip hsr-picker-${{ runner.os }}-x64.zip ./genish-impact-*
+         7z a -tzip hsr-picker-${{ runner.os }}-x64.zip ./hsr-*
       - name: Upload (${{ runner.os }})
         uses: actions/upload-artifact@v4.3.1
         with:
