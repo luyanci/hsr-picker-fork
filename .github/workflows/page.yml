@@ -41,7 +41,7 @@ jobs:
       - name: Package
         run: |
          cd HSR-Warp-Simulator
-         7z a -tzip frontend.zip ./.vercel/output/static
+         7z a -tzip frontend.zip ./build
       - name: Upload
         uses: actions/upload-artifact@v4.3.1
         with:
