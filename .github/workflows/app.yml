@@ -60,11 +60,11 @@ jobs:
       - name: Package (${{ runner.os }})
         run: |
          cd electron-static
-         7z a -tzip genish-impact-${{ runner.os }}-x64.zip ./genish-impact-*
+         7z a -tzip hsr-picker-${{ runner.os }}-x64.zip ./genish-impact-*
       - name: Upload (${{ runner.os }})
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: genish-impact-${{ runner.os }}
+          name: hsr-picker-${{ runner.os }}
           path: electron-static/hsr-picker-${{ runner.os }}-x64.zip
       - name: Remove old
         if: false
