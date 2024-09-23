@@ -1,4 +1,4 @@
-name: build py
+name: Build tool
 
 on:
     workflow_dispatch:
