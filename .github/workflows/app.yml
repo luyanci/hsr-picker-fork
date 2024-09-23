@@ -27,8 +27,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows,ubuntu,macos]
-    runs-on: ${{ matrix.os }}-latest
+        os: [windows-latest,ubuntu-latest,macos-latest,macos-13]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Use Node.js 20.x
@@ -39,9 +39,9 @@ jobs:
         uses: actions/cache@v4.0.2
         with:
           path: ./electron-static/node_modules
-          key: ${{ runner.os }}-npm-app-cache
+          key: ${{ matrix.os }}-npm-app-cache
           restore-keys: |
-            ${{ runner.os }}-npm-app-cache
+            ${{ matrix.os }}-npm-app-cache
       - name: Install Dependencies
         run: |
          cd electron-static
@@ -57,15 +57,15 @@ jobs:
         run: |
          cd electron-static
          yarn run build
-      - name: Package (${{ runner.os }})
+      - name: Package (${{ matrix.os }})
         run: |
          cd electron-static
-         7z a -tzip hsr-picker-${{ runner.os }}-x64.zip ./hsr-*
-      - name: Upload (${{ runner.os }})
+         7z a -tzip hsr-picker-${{ runner.os }}-${{ runner.arch }}.zip ./hsr-*
+      - name: Upload (${{ matrix.os }})
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: hsr-picker-${{ runner.os }}
-          path: electron-static/hsr-picker-${{ runner.os }}-x64.zip
+          name: hsr-picker-${{ matrix.os }}
+          path: electron-static/hsr-picker-${{ runner.os }}-${{ runner.arch }}.zip
       - name: Remove old
         if: false
         run: |
