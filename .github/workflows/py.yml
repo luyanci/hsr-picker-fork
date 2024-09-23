@@ -26,7 +26,7 @@ jobs:
             packages: python-tk 
             execute_install_scripts: true
         - name: Install dependencies
-          run: cd image-processor/python && pip install -r requirements.txt
+          run: cd image-processor/python && pip install -r requirements.txt && pip install pyinstaller
         - name: Build
           run: cd image-processor/python && pyinstaller -F main.py -n image-processor
         - name: pack
