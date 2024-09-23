@@ -16,4 +16,4 @@ def convert_jpg_to_webp(input_directory, output_directory):
                 # print('\''+os.path.splitext(file)[0]+'\',')
 
 # 使用函数
-convert_jpg_to_webp('../img/', '../webp')
+convert_jpg_to_webp('./img/', './webp')
