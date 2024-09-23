@@ -1,0 +1,38 @@
+name: build py
+
+on:
+    workflow_dispatch:
+    workflow_call:
+
+jobs:
+    build:
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [macos-latest,ubuntu-latest,windows-latest,macos-13]
+        runs-on: ${{matrix.os}}
+        steps:
+        - uses: actions/checkout@v4
+        - name: Setup Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: 3.8
+            cache: 'pip' 
+            cache-dependency-path: '**/requirements.txt'
+        - name: Cache apt dependencies(for linux)
+          if: false 
+          uses: awalsh128/cache-apt-pkgs-action@latest 
+          with: 
+            packages: python-tk 
+            execute_install_scripts: true
+        - name: Install dependencies
+          run: cd image-processor/python & pip install -r requirements.txt
+        - name: Build
+          run: cd image-processor/python & pyinstaller -F main.py -n image-processor
+        - name: pack
+          run: 7z a -tzip image-processor-${{runner.os}}-${{runner.arch}}.zip ./image-processor/python/dist
+        - name: Upload
+          uses: actions/upload-artifact@v4
+          with: 
+            name: build-${{matrix.os}}
+            path: ./image-processor-${{runner.os}}-${{runner.arch}}.zip
