@@ -6,7 +6,7 @@ updates:
     interval: daily
   open-pull-requests-limit: 20
 - package-ecosystem: npm
-  directory: "/Genshin-Impact-Wish-Simulator/"
+  directory: "/HSR-Warp-Simulator/"
   schedule:
     interval: weekly
   open-pull-requests-limit: 20
@@ -15,6 +15,6 @@ updates:
   schedule:
      interval: "daily"
 - package-ecosystem: "pip"
-  directory: "/"
+  directory: "/image-processor/python/"
   schedule:
      interval: "daily"
