@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: "20"
       - name: Cache NPM dependencies
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.1.2
         with:
           path: ./HSR-Warp-Simulator/node_modules
           key: ${{ runner.OS }}-npm-frontend-cache
