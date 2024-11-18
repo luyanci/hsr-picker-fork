@@ -39,7 +39,7 @@
 		"vite": "^4.5.2",
 		"vite-imagetools": "^5.0.3",
 		"vite-plugin-markdown": "^2.1.0",
-		"vite-plugin-pwa": "^0.14.7",
+		"vite-plugin-pwa": "^0.21.0",
 		"workbox-cacheable-response": "^6.5.4",
 		"workbox-core": "^6.5.4",
 		"workbox-precaching": "^6.5.4",
